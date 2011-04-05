@@ -349,5 +349,5 @@
       $str = explode(" ", $str);
       return implode(" " , array_slice($str, 0, $length));
     }
-    
+wp_deregister_script('prototype');
 ?>
