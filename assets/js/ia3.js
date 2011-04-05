@@ -65,37 +65,6 @@ ia3 = {
 				}
 			}
 		},
-		foundTweetlist: function() {
-			var e = "",
-				g = {},
-				f = $("#containsTweets"),
-				h = $("#containsTwoosers");
-			$(document).bind("CORE:FOUND_TWEETS:FETCH", function() {
-				$.getJSON("http://search.twitter.com/search.json?callback=?&rpp=10&q=" + e.replace(/\+OR\+$/, ""), function(a) {
-					if (typeof a.results == "object" || typeof a.results == "array") {
-						g = a.results;
-						$(document).trigger("CORE:FOUND_TWEETS:UPDATE");
-					}
-				});
-			});
-			$(document).bind("CORE:FOUND_TWEETS:UPDATE", function() {
-				f.empty();
-				for (var b in g) {
-					var a = g[b];
-					a.text = a.text.replace(/((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/g, '<a href="$1">$1</a>');
-					a.text = a.text.replace(/\@(\w+)/g, '<a class="twooser" href="http://twitter.com/$1">@$1</a>');
-					f.append('<li><img alt="" src="' + a.profile_image_url + '" /><blockquote><p><a class="twooser" href="http://twitter.com/' + a.from_user + '">' + a.from_user + "</a>: " + a.text + '</p></blockquote><p><a href="http://twitter.com/' + a.from_user + "/status/" + a.id + '/">' + $.timeago(a.created_at) + "</a></p></li>");
-				}
-				setTimeout(function() {
-					$(document).trigger("CORE:FOUND_TWEETS:FETCH");
-				},
-				180000);
-			});
-			$("li h2 a", h).each(function() {
-				e += "from%3A" + $(this).html() + "+OR+";
-			});
-			$(document).trigger("CORE:FOUND_TWEETS:FETCH");
-		}
 	}
 };
-$(document).bind("CORE:HAS_INITIALIZED", ia3.listeners.hasInitialized).bind("CORE:HAS_RESIZED", ia3.listeners.hasResized).bind("CORE:FOUND_TWEETLIST", ia3.listeners.foundTweetlist);
+$(document).bind("CORE:HAS_INITIALIZED", ia3.listeners.hasInitialized).bind("CORE:HAS_RESIZED", ia3.listeners.hasResized);
