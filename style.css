@@ -9,7 +9,7 @@
 **/
 
 @media all {html,body,div,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,svg,time,mark,audio,video {
-	font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;
+/*	font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;*/
 	background: transparent;
 	border: 0;
 	margin: 0;
@@ -22,6 +22,11 @@ body {
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,img,menu,nav,section,svg {
 	display: block
+}
+
+.gist, .gist-file, .gist-data {
+	font-size: 12px;
+	font-family: 'Inconsolata', Monaco, 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace !important;
 }
 .wp_syntax {
 	font: 12px/14px 'Inconsolata', 'Consolas', 'Monaco', mono;
